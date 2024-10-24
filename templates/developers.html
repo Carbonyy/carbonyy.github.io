@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Разработчики</h1>
+    <div class="row">
+      <style>
+        .card {
+        height: 100%;
+        }
+      </style>
+        {% for resume in resumes %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ resume.image_url }}" class="card-img-top" alt="{{ resume.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ resume.name }}</h5>
+                    <p class="card-text"><strong>Профессия:</strong> {{ resume.profession }}</p>
+                    <p class="card-text"><strong>Возраст:</strong> {{ resume.age }}</p>
+                    <p class="card-text"><strong>Пол:</strong> {{ resume.gender }}</p>
+                    <p class="card-text"><strong>Стек технологий:</strong> {{ resume.stack_of_technologies }}</p>
+                    <p class="card-text"><strong>Soft-скиллы:</strong> {{ resume.soft_skills }}</p>
+                    <p class="card-text"><strong>Hard-скиллы:</strong> {{ resume.hard_skills }}</p>
+                    <p class="card-text"><strong>О себе:</strong> {{ resume.description_about_me }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -16,6 +16,13 @@ class Resume(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     profession = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String(100), nullable=False)
+    stack_of_technologies = db.Column(db.String(200), nullable=False)
+    soft_skills = db.Column(db.String(200), nullable=False)
+    hard_skills = db.Column(db.String(200), nullable=False)
+    description_about_me = db.Column(db.String(200), nullable=False)
+    salary = db.Column(db.Integer, nullable=False)
     image_url = db.Column(db.String(250), nullable=False)
 
 with app.app_context():

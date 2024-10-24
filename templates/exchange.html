@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Фриланс услуги программистов</h2>
+    <div class="row">
+        {% for resume in resumes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ resume.image_url }}" class="card-img-top" alt="{{ resume.profession }}" style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ resume.profession }}</h5>
+                    <p class="card-text">Цена: {{ resume.salary }} руб.</p>
+                    <p class="card-text">ФИО: {{ resume.name }}</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#developerModal{{ resume.id }}">
+                       Подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% for resume in resumes %}
+<div class="modal fade" id="developerModal{{ resume.id }}" tabindex="-1" role="dialog" aria-labelledby="developerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="developerModalLabel">Информация о разработчике</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Подробная информация о фрилансере</p>
+                <p>Описание: {{ resume.description_about_me }}</p>
+                <p>Стек технологий: {{ resume.stack_of_technologies }}</p>
+                <p>Soft Skills: {{ resume.soft_skills }}</p>
+                <p>Hard Skills: {{ resume.hard_skills }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

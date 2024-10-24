@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Размещение резюме</h2>
+
+    {% if success is not none %}
+        {% if success %}
+            <div class="alert alert-success" role="alert">
+                Резюме успешно отправлено!
+            </div>
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                Произошла ошибка при отправке резюме. Пожалуйста, попробуйте еще раз.
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.profession.label(class="form-label") }}
+            {{ form.profession(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.age.label(class="form-label") }}
+            {{ form.age(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.gender.label(class="form-label") }}
+            {{ form.gender(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.stack_of_technologies.label(class="form-label") }}
+            {{ form.stack_of_technologies(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.soft_skills.label(class="form-label") }}
+            {{ form.soft_skills(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.hard_skills.label(class="form-label") }}
+            {{ form.hard_skills(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.salary.label(class="form-label") }}
+            {{ form.salary(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.description_about_me.label(class="form-label") }}
+            {{ form.description_about_me(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.image_url.label(class="form-label") }}
+            {{ form.image_url(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+    </form>
+</div>
+{% endblock %}
