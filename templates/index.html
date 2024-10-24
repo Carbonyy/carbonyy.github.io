@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url('static/img/ne.png');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        font-size: 20px;
+    }
+    .content-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .button-container {
+        margin-top: 40px;
+    }
+</style>
+
+<div class="container content-wrapper">
+    <h1 class="display-4">Добро пожаловать на Биржу фриланс услуг</h1>
+    <p class="lead">Найдите подходящего для себя разработчика легко!</p>
+    <p class="mb-5">Наш сервис предназначен для соединения клиентов с фрилансерами, предлагающими широкий спектр услуг. Здесь вы можете без труда найти разработчиков, дизайнеров, копирайтеров и многих других специалистов.</p>
+    <p class="mb-5">Все, что вам нужно сделать, это разместить свою задачу и просмотреть отклики от профессионалов, готовых ее выполнить. Мы гарантируем высокое качество работы и надежность всех заявок.</p>
+    <div class="button-container">
+        <a href="{{ url_for('exchange') }}" class="btn btn-primary btn-lg">Перейти к бирже</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!-- templates/article.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 style="text-align: center;">{{ article.title }}</h1>
+        <img src="{{ article.image_url }}" class="img-fluid" alt="{{ article.title }}" style="max-width: 600px; height: auto;">
+        <p>{{ article.content }}</p>
+        <a href="{{ url_for('articles') }}" class="btn btn-primary">Назад к статьям</a>
+    </div>
+{% endblock %}

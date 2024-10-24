@@ -1,11 +1,8 @@
-from flask import Flask, render_template, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
+from flask import render_template, redirect, url_for
 from forms import ResumeForm
+from models import Article, app
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
+
 
 @app.route('/')
 def index():
@@ -13,8 +10,13 @@ def index():
 
 @app.route('/articles')
 def articles():
+    articles = Article.query.all()
+    return render_template('articles.html', articles=articles)
 
-    return render_template('articles.html')
+@app.route('/article/<int:article_id>')
+def article(article_id):
+    article = Article.query.get_or_404(article_id)
+    return render_template('article.html', article=article)
 
 @app.route('/exchange')
 def exchange():
@@ -25,7 +27,7 @@ def exchange():
 def submit_resume():
     form = ResumeForm()
     if form.validate_on_submit():
-        
+
         return redirect(url_for('index'))
     return render_template('submit_resume.html', form=form)
 
@@ -38,4 +40,4 @@ def developers():
     return render_template('developers.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
